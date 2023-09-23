@@ -29,7 +29,7 @@ const WritePage = () => {
   const [value, setValue] = useState("");
   const [title, setTitle] = useState("");
   const [catSlug, setCatSlug] = useState("");
-  const [progressbar, setProgressBar] = useState(0);
+  const [progressbar, setProgressBar] = useState(0)
 
   useEffect(() => {
     const storage = getStorage(app);
@@ -64,7 +64,7 @@ const WritePage = () => {
       );
     };
 
-    //video
+    //video process
     const uploadVideo = () => {
       if (!videoFile) return; // Make sure a video file is selected
 
