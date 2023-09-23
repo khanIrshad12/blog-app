@@ -3,7 +3,6 @@
 import Image from "next/image";
 import styles from "./writePage.module.css";
 import { useEffect, useState } from "react";
-
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import {
@@ -15,7 +14,7 @@ import {
 import { app } from "@/utils/firebase";
 import ProgressBar from "@/components/Progressbar/ProgressBar";
 import dynamic from "next/dynamic";
-
+import 'react-quill/dist/quill.bubble.css';
 const WritePage = () => {
   const { status } = useSession();
   const ReactQuill =dynamic(()=>import('react-quill'),{ssr:false})
@@ -29,7 +28,7 @@ const WritePage = () => {
   const [value, setValue] = useState("");
   const [title, setTitle] = useState("");
   const [catSlug, setCatSlug] = useState("");
-  const [progressbar, setProgressBar] = useState(0)
+  const [progressbar, setProgressBar] = useState(0);
 
   useEffect(() => {
     const storage = getStorage(app);
@@ -64,7 +63,7 @@ const WritePage = () => {
       );
     };
 
-    //video process
+    //video
     const uploadVideo = () => {
       if (!videoFile) return; // Make sure a video file is selected
 
@@ -126,7 +125,7 @@ const WritePage = () => {
       setFile(null);
       setVideo(null);
       setProgressBar(0);
-      router.push(`/`);
+      router.push(`/write`);
     } else {
       const res = await fetch("/api/posts", {
         method: "POST",
